@@ -75,7 +75,7 @@ function CarListing() {
                                             </h4>
                                         </div>
 
-                                        <p className="text-sm md:text-base text-gray-600 mb-4 dark:text-white">{items.description}</p>
+                                        {/* <p className="text-sm md:text-base text-gray-600 mb-4 dark:text-white">{items.description}</p> */}
 
                                         <div className="grid grid-cols-3 gap-3 md:gap-6 text-center">
                                             <div>

@@ -18,9 +18,10 @@ function FeaturedSection() {
             return description.slice(0, limit) + '...';
         }
         return description;
+        
     };
     return (
-        <div className='dark:bg-[#141D2E] text-white mb-6'>
+        <div className='dark:bg-[#141D2E] text-white'>
             <ContainerLayout>
                 <div className="py-10">
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Featured Cars</h2>
