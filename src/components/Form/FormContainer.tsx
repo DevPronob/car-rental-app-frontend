@@ -18,7 +18,7 @@ function FormContainer({ children, onSubmit, width, resolver, defaultValues }: T
         formConfig['resolver'] = resolver
     }
     if (defaultValues) {
-        formConfig['defaultValues'] = resolver
+        formConfig['defaultValues'] = defaultValues
     }
     const methods = useForm(formConfig)
     const submit: SubmitHandler<FieldValues> = (data) => {

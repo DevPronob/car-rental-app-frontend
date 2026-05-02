@@ -3,6 +3,7 @@ import MainLayout from '../components/Layout/MainLayout';
 import Home from '../pages/Home/Home';
 import CarListing from '../pages/CarListing/CarListing';
 import AboutUs from '../pages/AboutUs/AboutUs';
+import ContactUs from '../pages/ContactUs/ContactUs';
 import CarDetail from '../pages/CarDetails/CarDetail';
 import Login from '../pages/Auth/Login';
 import Signup from '../pages/Auth/Signup';
@@ -17,13 +18,18 @@ import ManageBookings from '../pages/adminManagement/ManageBookings';
 import ManageReturnCar from '../pages/adminManagement/ManageReturnCar';
 import UserManagement from '../pages/adminManagement/UserManagement';
 import Reports from '../pages/adminManagement/Reports';
-import ProctectedRoute from '../components/Layout/ProctectedRoute';
+import DriverRequests from '../pages/adminManagement/DriverRequests';
+import ProtectedRoute from '../components/Layout/ProtectedRoute';
 import Payment from '../pages/userDashboard/Payment/Payment';
 import PaymentSuccess from '../pages/userDashboard/Payment/PaymentSuccess';
 import PaymentFailure from '../pages/userDashboard/Payment/PaymentFailure';
 import Callback from '../pages/userDashboard/Payment/Callback';
 import ChangePassword from '../pages/Auth/ChangePassword';
 import NotFound from '../components/NotFound';
+import DriverOverview from '../pages/driverDashboard/DriverOverview';
+import AssignedTrips from '../pages/driverDashboard/AssignedTrips';
+import AvailableTrips from '../pages/driverDashboard/AvailableTrips';
+import RequestForDriver from '../pages/RequestForDriver';
 
 export const router = createBrowserRouter([
     {
@@ -35,12 +41,20 @@ export const router = createBrowserRouter([
                 element: <Home></Home>,
             },
             {
+                path: '/request-for-driver',
+                element: <RequestForDriver />,
+            },
+            {
                 path: '/car-listing',
                 element: <CarListing />,
             },
             {
                 path: '/about-us',
                 element: <AboutUs />,
+            },
+            {
+                path: '/contact-us',
+                element: <ContactUs />,
             },
             {
                 path: '/car/:id',
@@ -61,9 +75,9 @@ export const router = createBrowserRouter([
             {
                 path: '/booking',
                 element: (
-                    <ProctectedRoute role='user'>
+                    <ProtectedRoute role='user'>
                         <Booking></Booking>
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 )
             },
             {
@@ -96,34 +110,34 @@ export const router = createBrowserRouter([
             {
                 path: '',
                 element: (
-                    <ProctectedRoute role='user'>
+                    <ProtectedRoute role='user'>
                         <UserOverview />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
 
                 ),
             },
             {
                 path: 'booking-management',
                 element: (
-                    <ProctectedRoute role='user'>
+                    <ProtectedRoute role='user'>
                         <BookingManagement />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 ),
             },
             {
                 path: 'payment-management',
                 element: (
-                    <ProctectedRoute role='user'>
+                    <ProtectedRoute role='user'>
                         <PaymentManagement />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 ),
             },
             {
                 path: 'payment',
                 element: (
-                    <ProctectedRoute role='user'>
+                    <ProtectedRoute role='user'>
                         <Payment />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 ),
             },
 
@@ -136,52 +150,90 @@ export const router = createBrowserRouter([
             {
                 path: '',
                 element: (
-                    <ProctectedRoute role='admin'>
+                    <ProtectedRoute role='admin'>
                         <AdminOverview />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 ),
             },
             {
                 path: 'manage-cars',
                 element: (
-                    <ProctectedRoute role='admin'>
+                    <ProtectedRoute role='admin'>
                         <ManageCar />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 ),
             },
             {
                 path: 'manage-bookings',
                 element: (
-                    <ProctectedRoute role='admin'>
+                    <ProtectedRoute role='admin'>
                         <ManageBookings />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 ),
             },
             {
                 path: 'manage-return-car',
                 element: (
-                    <ProctectedRoute role='admin'>
+                    <ProtectedRoute role='admin'>
                         <ManageReturnCar />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 ),
             },
             {
                 path: 'user-management',
                 element: (
-                    <ProctectedRoute role='admin'>
+                    <ProtectedRoute role='admin'>
                         <UserManagement />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'driver-requests',
+                element: (
+                    <ProtectedRoute role='admin'>
+                        <DriverRequests />
+                    </ProtectedRoute>
                 ),
             },
             {
                 path: 'reports',
                 element: (
-                    <ProctectedRoute role='admin'>
+                    <ProtectedRoute role='admin'>
                         <Reports />
-                    </ProctectedRoute>
+                    </ProtectedRoute>
                 ),
             },
 
+        ],
+    },
+    {
+        path: '/driver/dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: '',
+                element: (
+                    <ProtectedRoute role='driver'>
+                        <DriverOverview />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'assigned-trips',
+                element: (
+                    <ProtectedRoute role='driver'>
+                        <AssignedTrips />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'available-trips',
+                element: (
+                    <ProtectedRoute role='driver'>
+                        <AvailableTrips />
+                    </ProtectedRoute>
+                ),
+            },
         ],
     },
 ]);

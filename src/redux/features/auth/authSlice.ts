@@ -3,10 +3,11 @@ import { RootState } from "../../store";
 
 
 export interface TUser {
-    name: string,
-    email: string,
-    role: string
-
+    userId: string;
+    name: string;
+    email: string;
+    role: string;
+    phone?: string;
 }
 
 

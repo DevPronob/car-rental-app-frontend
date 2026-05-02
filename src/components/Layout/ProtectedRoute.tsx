@@ -4,24 +4,31 @@ import { logout, useCurrentToken } from '../../redux/features/auth/authSlice';
 import { verifyToken } from '../../utilits/VerifyToken';
 import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { isExpired } from 'react-jwt';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function ProctectedRoute({ children, role }: { children: ReactNode, role: string | undefined }) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let user: any;
+function ProtectedRoute({ children, role }: { children: ReactNode, role: string | undefined }) {
     const dispatch = useDispatch()
     const token = useAppSelector(useCurrentToken);
-    if (token) {
-        user = verifyToken(token)
-    }
-    if (role !== undefined && role !== user?.role) {
-        dispatch(logout());
-        return <Navigate to="/login" replace={true} />;
-    }
-    if (!token) {
+    
+    if (!token || isExpired(token)) {
+        if (token) dispatch(logout());
         return <Navigate to='/login' replace={true} />
     }
+
+    const user: any = verifyToken(token);
+
+    if (!user) {
+        dispatch(logout());
+        return <Navigate to='/login' replace={true} />
+    }
+
+    if (role !== undefined && role !== user?.role) {
+        // Don't logout, just redirect to unauthorized or home
+        return <Navigate to="/" replace={true} />;
+    }
+
     return <>{children}</>
 }
 
-export default ProctectedRoute
+export default ProtectedRoute

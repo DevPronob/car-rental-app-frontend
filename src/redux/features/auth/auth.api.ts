@@ -9,6 +9,13 @@ const authApi = baseApi.injectEndpoints({
                 body: userInfo
             })
         }),
+        signUpDriver: builder.mutation({
+            query: (userInfo) => ({
+                url: '/auth/driver-signup',
+                method: 'POST',
+                body: userInfo
+            })
+        }),
         login: builder.mutation({
             query: (userInfo) => ({
                 url: '/auth/signin',
@@ -20,4 +27,4 @@ const authApi = baseApi.injectEndpoints({
     })
 })
 
-export const { useSignUpMutation, useLoginMutation } = authApi
+export const { useSignUpMutation, useLoginMutation, useSignUpDriverMutation } = authApi

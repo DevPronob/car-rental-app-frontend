@@ -8,55 +8,91 @@ import { TCar } from '../../types/car.type';
 function FeaturedSection() {
     const { data: carData } = useGetCarsQuery(undefined)
     const navigate = useNavigate();
-    console.log(carData, "carData")
 
     const handleNavigate = (id: string) => {
         navigate(`/car/${id}`);
     };
-    const trimDescription = (description: string, limit = 200) => {
+
+    const trimDescription = (description: string, limit = 100) => {
         if (description.length > limit) {
             return description.slice(0, limit) + '...';
         }
         return description;
-        
     };
+
     return (
-        <div className='dark:bg-[#141D2E] text-white'>
+        <section className='py-20 dark:bg-[#0f172a] bg-gray-50 transition-colors duration-300'>
             <ContainerLayout>
-                <div className="py-10">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Featured Cars</h2>
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                    <div>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                            Featured <span className="text-blue-600 dark:text-blue-500">Cars</span>
+                        </h2>
+                        <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl text-lg">
+                            Experience the pinnacle of automotive engineering with our handpicked selection of premium vehicles.
+                        </p>
+                    </div>
+                    <button 
+                        onClick={() => navigate('/car-listing')}
+                        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/50"
+                    >
+                        View All Cars
+                    </button>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {carData?.data?.filter((i: TCar) => i.featured).map((item: any) => (
-                        <div key={item._id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full">
-                            <a href="#">
-                                <img className="rounded-t-lg w-full h-64 object-cover" src={item.images[0]} alt="" />
-                            </a>
-                            <div className="p-5">
-                                <a href="#">
-                                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{item.name}</h5>
-                                </a>
-                                <hr />
-                                <div>
-                                    <p className="mb-3 font-normal text-gray-600 dark:text-white">{trimDescription(item.description)}</p>
-                                    <h3 className="text-xl text-gray-900 mb-2 dark:text-white">
-                                        <span className="text-2xl">{item.pricePerHour} BDT </span>/ Per Hour
-                                    </h3>
-                                    <div>
-                                        <a onClick={() => handleNavigate(item._id)} className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            Details
-                                            <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                            </svg>
-                                        </a>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    {carData?.data?.filter((i: TCar) => i.featured).slice(0, 3).map((item: any) => (
+                        <div 
+                            key={item._id} 
+                            className="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                        >
+                            {/* Image Container */}
+                            <div className="relative h-64 overflow-hidden">
+                                <img 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                                    src={item.images[0]} 
+                                    alt={item.name} 
+                                />
+                                <div className="absolute top-4 right-4 px-4 py-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-full text-blue-600 dark:text-blue-400 font-bold text-sm shadow-sm">
+                                    {item.type}
+                                </div>
+                                <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent">
+                                    <span className="text-white font-semibold text-lg">{item.pricePerHour} BDT <span className="text-sm font-normal opacity-80">/hr</span></span>
+                                </div>
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-8">
+                                <h5 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                    {item.name}
+                                </h5>
+                                <p className="mb-6 text-gray-600 dark:text-gray-400 leading-relaxed min-h-[4rem]">
+                                    {trimDescription(item.description)}
+                                </p>
+                                
+                                <div className="flex items-center justify-between pt-6 border-t border-gray-100 dark:border-gray-700">
+                                    <div className="flex gap-2">
+                                        {item.features.slice(0, 2).map((feature: string, idx: number) => (
+                                            <span key={idx} className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">
+                                                {feature}
+                                            </span>
+                                        ))}
                                     </div>
+                                    <button 
+                                        onClick={() => handleNavigate(item._id)} 
+                                        className="p-3 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-2xl hover:bg-blue-600 hover:text-white transition-all duration-300"
+                                    >
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </ContainerLayout>
-        </div>
+        </section>
     );
 }
 

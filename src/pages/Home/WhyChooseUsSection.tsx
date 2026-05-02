@@ -1,35 +1,56 @@
-import { FaCarSide, FaRegSmile } from "react-icons/fa";
-import { GiSelfLove } from "react-icons/gi";
+import { FaCarSide, FaHeadset, FaRegSmile } from "react-icons/fa";
 import ContainerLayout from "../../components/Layout/ContainerLayout";
 
 function WhyChooseUsSection() {
+    const features = [
+        {
+            icon: <FaCarSide />,
+            title: "Premium Fleet",
+            description: "Choose from our curated selection of high-end luxury vehicles and performance cars maintained to the highest standards."
+        },
+        {
+            icon: <FaRegSmile />,
+            title: "Best Rate Guarantee",
+            description: "We provide competitive pricing with absolute transparency. No hidden fees, just straightforward luxury rentals."
+        },
+        {
+            icon: <FaHeadset />,
+            title: "24/7 VIP Support",
+            description: "Our dedicated concierge team is available around the clock to ensure your journey is seamless and stress-free."
+        }
+    ];
+
     return (
-        <div className="bg-blue-700 text-white dark:bg-[#141D2E] text-white py-12 py-8">
+        <section className="py-24 bg-white dark:bg-[#0f172a] transition-colors duration-300">
             <ContainerLayout>
-                <div className="text-center py-10">
-                    <h1 className="text-3xl font-bold mb-3">Why Choose Us</h1>
-                    <p className="text-base font-light">Explore our first class limousine & car rental services</p>
+                <div className="text-center mb-16 space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tight">
+                        Why Choose <span className="text-blue-600">AVIS</span>
+                    </h2>
+                    <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg font-medium">
+                        Elevating your travel experience with world-class service and a fleet that defines excellence.
+                    </p>
                 </div>
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-center items-center py-8">
-                    <div className="text-center flex flex-col items-center justify-center">
-                        <p className="text-[3.2rem] my-4"><FaCarSide /></p>
-                        <h3 className="mb-2 text-xl font-bold">Variety of Car Brands</h3>
-                        <p className="mb-3 font-normal">Lorem ipsum dolor sit amet, consectadipiscing elit. Aenean commodo ligula eget dolor.</p>
-                    </div>
-                    <div className="text-center flex flex-col items-center justify-center">
-                        <p className="text-[3.2rem] my-4"><FaRegSmile /></p>
-                        <h3 className="mb-2 text-xl font-bold">Best Rate Guarantee</h3>
-                        <p className="mb-3 font-normal">Lorem ipsum dolor sit amet, consectadipiscing elit. Aenean commodo ligula eget dolor.</p>
-                    </div>
-                    <div className="text-center flex flex-col items-center justify-center">
-                        <p className="text-[3.2rem] my-4"><GiSelfLove /></p>
-                        <h3 className="mb-2 text-xl font-bold">Awesome Customer Support</h3>
-                        <p className="mb-3 font-normal">Lorem ipsum dolor sit amet, consectadipiscing elit. Aenean commodo ligula eget dolor.</p>
-                    </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {features.map((feature, idx) => (
+                        <div 
+                            key={idx} 
+                            className="group p-10 bg-gray-50 dark:bg-gray-800/50 rounded-[40px] border border-gray-100 dark:border-gray-700 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-2"
+                        >
+                            <div className="w-20 h-20 mb-8 rounded-3xl bg-blue-600 text-white flex items-center justify-center text-4xl shadow-xl shadow-blue-600/30 group-hover:scale-110 transition-transform duration-500">
+                                {feature.icon}
+                            </div>
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{feature.title}</h3>
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                                {feature.description}
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </ContainerLayout>
-        </div>
-    )
+        </section>
+    );
 }
 
 export default WhyChooseUsSection;

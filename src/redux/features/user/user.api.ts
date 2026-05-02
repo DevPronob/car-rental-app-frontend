@@ -23,6 +23,15 @@ const userApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ['booking', 'car', 'user']
         }),
+        getDriverRequests: builder.query({
+            query: () => {
+                return {
+                    url: '/user/driver-requests',
+                    method: 'GET',
+                }
+            },
+            providesTags: ['user']
+        }),
         getMe: builder.query({
             query: () => {
                 return {
@@ -46,4 +55,4 @@ const userApi = baseApi.injectEndpoints({
     })
 })
 
-export const { useGetusersQuery, useChangePasswordMutation, useGetMeQuery, useUpdateUserMutation } = userApi
+export const { useGetusersQuery, useChangePasswordMutation, useGetMeQuery, useUpdateUserMutation, useGetDriverRequestsQuery } = userApi

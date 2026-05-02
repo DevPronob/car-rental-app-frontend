@@ -1,19 +1,15 @@
-
 import HeroSection from './HeroSection'
-
 import FeaturedSection from './FeaturedSection';
+import SafetySection from './SafetySection';
 import WhyChooseUsSection from './WhyChooseUsSection';
-
 import TestomonialSection from './TestomonialSection';
 
 function Home() {
-    // const { data, error, isLoading } = useGetAllCarsQuery(undefined);
-    // console.log(data, "data")
-
     return (
-        <div>
+        <div className="space-y-0">
             <HeroSection />
             <FeaturedSection />
+            <SafetySection />
             <WhyChooseUsSection />
             <TestomonialSection />
         </div>

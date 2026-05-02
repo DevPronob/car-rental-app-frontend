@@ -30,14 +30,26 @@ function ChangePassword() {
         console.log(res)
     }
     return (
-        <div>
-            <Row justify="center" align="middle" style={{ height: '100vh' }}>
-                <FormContainer onSubmit={onSubmit} width={'30%'}>
-                    <InputField type="text" name="oldPassword" label="Old Password" />
-                    <InputField type="text" name="newPassword" label="New Password" />
-                    <Button htmlType="submit">Login</Button>
+        <div className="min-h-screen flex items-center justify-center bg-[#f8fafc] dark:bg-[#0f172a]">
+            <div className="w-full max-w-md p-10 bg-white dark:bg-[#1e293b] rounded-[2.5rem] shadow-2xl border border-gray-100 dark:border-gray-800">
+                <div className="mb-8 text-center">
+                    <h3 className="text-3xl font-black text-gray-900 dark:text-white mb-2">Change Password</h3>
+                    <p className="text-gray-500 dark:text-gray-400 font-medium">Secure your account with a new password.</p>
+                </div>
+                
+                <FormContainer onSubmit={onSubmit} width="100%">
+                    <div className="space-y-4">
+                        <InputField type="password" name="oldPassword" label="Current Password" />
+                        <InputField type="password" name="newPassword" label="New Password" />
+                        <Button 
+                            className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white border-none rounded-xl font-bold text-lg shadow-lg shadow-blue-600/20 mt-4"
+                            htmlType="submit"
+                        >
+                            Update Password
+                        </Button>
+                    </div>
                 </FormContainer>
-            </Row>
+            </div>
         </div>
     )
 }

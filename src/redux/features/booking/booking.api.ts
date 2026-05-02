@@ -1,5 +1,5 @@
 import { baseApi } from "../../api/baseApi";
-//j
+
 const bookingApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         createBooking: builder.mutation({
@@ -22,18 +22,16 @@ const bookingApi = baseApi.injectEndpoints({
         }),
         updateBooking: builder.mutation({
             query: (args) => {
-                console.log(args, "args")
                 return {
                     url: `/bookings/${args.id}`,
                     method: 'PUT',
-                    body: { status: args.status }
+                    body: args.body
                 }
             },
             invalidatesTags: ['booking', 'car']
         }),
         returnCarBooking: builder.mutation({
             query: (args) => {
-                console.log(args, "args")
                 return {
                     url: `/cars/return`,
                     method: 'PUT',
@@ -42,7 +40,6 @@ const bookingApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ['booking', 'car']
         }),
-
         getMyBooking: builder.query({
             query: (args) => {
                 return {
@@ -52,6 +49,33 @@ const bookingApi = baseApi.injectEndpoints({
                 }
             },
             providesTags: ['booking']
+        }),
+        getDriverBookings: builder.query({
+            query: (args) => {
+                return {
+                    url: '/bookings/driver-bookings',
+                    method: 'GET',
+                    params: args,
+                }
+            },
+            providesTags: ['booking']
+        }),
+        getUnassignedBookings: builder.query({
+            query: (args) => {
+                return {
+                    url: '/bookings/unassigned-bookings',
+                    method: 'GET',
+                    params: args,
+                }
+            },
+            providesTags: ['booking']
+        }),
+        claimBooking: builder.mutation({
+            query: (id) => ({
+                url: `/bookings/claim/${id}`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['booking']
         }),
         deleteBooking: builder.mutation({
             query: (args) => {
@@ -66,4 +90,14 @@ const bookingApi = baseApi.injectEndpoints({
     })
 })
 
-export const { useCreateBookingMutation, useDeleteBookingMutation, useGetMyBookingQuery, useReturnCarBookingMutation, useGetBookingQuery, useUpdateBookingMutation } = bookingApi
+export const { 
+    useCreateBookingMutation, 
+    useDeleteBookingMutation, 
+    useGetMyBookingQuery, 
+    useReturnCarBookingMutation, 
+    useGetBookingQuery, 
+    useUpdateBookingMutation,
+    useGetDriverBookingsQuery,
+    useGetUnassignedBookingsQuery,
+    useClaimBookingMutation
+} = bookingApi;

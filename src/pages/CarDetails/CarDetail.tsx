@@ -123,7 +123,7 @@ function CarDetail() {
                             <div className='flex items-center justify-between py-2'><p className='font-light'>Child Seat</p> <p className='font-bold'>+$5/day</p></div>
                         </div>
                         <div>
-                            <h3 className='text-2xl font-bold py-4'>Add extras, complete your trip</h3>
+                            <h3 className='text-2xl font-bold py-4 text-black dark:text-white'>Add extras, complete your trip</h3>
                             <div>
                                 <FeatureInput mobileWifi={mobileWifi} setMobileWifi={setMobileWifi} gps={gps} setGps={setGps} childSeat={childSeat} setChildSeat={setChildSeat} />
                             </div>

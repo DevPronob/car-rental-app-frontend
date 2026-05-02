@@ -8,17 +8,19 @@ const carApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getCars: builder.query({
             query: (args?: any) => {
-                console.log(args)
-                // const params = new URLSearchParams();
-                // if (args) {
-                //     args.forEach((item: TQueryParam) => {
-                //         params.append(item.name, item.value as string);
-                //     });
-                // }
+                const params = new URLSearchParams();
+                if (args) {
+                    Object.keys(args).forEach((key) => {
+                        const value = args[key];
+                        if (value !== undefined && value !== null && value !== '' && value !== 'undefined') {
+                            params.append(key, value.toString());
+                        }
+                    });
+                }
                 return {
                     url: '/cars',
                     method: 'GET',
-                    params: args,
+                    params: params,
                 }
             },
             transformResponse: (response: TResponseRedux<any>) => {
