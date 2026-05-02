@@ -1,36 +1,101 @@
-## Project Name
-Avis Car Rental
+# 🚗 Avis Car Rental
 
-## Introduction
-A user-friendly and responsive car rental reservation platform designed for both customers and administrators.
+## 📌 Introduction  
+Avis Car Rental is a modern, user-friendly car rental reservation platform designed for both customers and administrators. It provides a smooth booking experience with a clean UI and powerful management features.
 
-## Project Description
-The Avis Car Rental website allows users to browse and book a variety of cars easily. With an intuitive interface, users can manage their reservations while admins have the tools necessary to oversee inventory and bookings effectively.
+---
 
-## Features
-- **Public Pages**: Home, Car Listing, Car Details, About Us, Error Page
-- **User Authentication**: Sign Up, Sign In
-- **User Dashboard**: Manage user data, booking history
-- **Admin Dashboard**: Manage cars, bookings, users
-- **Car Booking System**: Search, select, and reserve cars
-- **Responsive Design**: Optimized for mobile, tablet, and desktop
-- **Payment System**: Secure payment integration
-- **Theme Switcher**: Dark/light mode options
+## 📝 Project Description  
+The Avis Car Rental web application allows users to explore a wide range of vehicles and make reservations easily. Customers can manage their bookings, while administrators can efficiently control cars, users, and reservations through a dedicated dashboard.
 
-## Technology Stack
-- **Frontend**: React, Redux, Tailwind CSS
-- **Backend**: Node.js, Express, MongoDB
-- **Others**: JWT for authentication, AamarPay for payments
+---
 
-## Installation Guideline
+## ✨ Features  
 
-### Prerequisites
-- Node.js (v14 or above)
-- npm (v6 or above)
-- A MongoDB database (MongoDB Atlas recommended)
+### 🌐 Public Pages  
+- Home  
+- Car Listing  
+- Car Details  
+- About Us  
+- Error Page  
 
-### Installation Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/DevPronob/car-rental-app-client.git
-   cd car-rental-app-client
+### 🔐 Authentication  
+- User Sign Up  
+- User Sign In  
+
+### 👤 User Dashboard  
+- Manage profile  
+- View booking history  
+
+### 🛠️ Admin Dashboard  
+- Manage cars  
+- Manage bookings  
+- Manage users  
+
+### 🚘 Booking System  
+- Search available cars  
+- Select and reserve vehicles  
+
+### 📱 UI/UX  
+- Fully responsive (mobile, tablet, desktop)  
+- Dark/Light theme toggle  
+
+### 💳 Payment  
+- Secure payment integration (AamarPay)  
+
+---
+
+## 🧰 Technology Stack  
+
+### Frontend  
+- React  
+- Redux  
+- Tailwind CSS  
+
+### Backend  
+- Node.js  
+- Express.js  
+- MongoDB  
+
+### Others  
+- JWT Authentication  
+- AamarPay Payment Gateway  
+
+---
+
+## 🔗 Links  
+
+- 🌍 **Live App**  
+  https://car-rental-app-client-three.vercel.app/
+
+- 🖥️ **Frontend Repository**  
+  https://github.com/DevPronob/car-rental-app-client
+
+- ⚙️ **Backend Repository**  
+  https://github.com/DevPronob/car-rental-app-backend  
+
+---
+
+## ⚙️ Installation Guideline  
+
+### ✅ Prerequisites  
+- Node.js (v14 or above)  
+- npm (v6 or above)  
+- MongoDB (Atlas recommended)  
+
+---
+
+### 🚀 Installation Steps  
+
+```bash
+# Clone the frontend repository
+git clone https://github.com/DevPronob/car-rental-app-client.git
+
+# Navigate to the project folder
+cd car-rental-app-client
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
