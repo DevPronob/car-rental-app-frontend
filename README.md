@@ -69,7 +69,7 @@ The Avis Car Rental web application allows users to explore a wide range of vehi
   https://car-rental-app-client-three.vercel.app/
 
 - 🖥️ **Frontend Repository**  
-  https://github.com/DevPronob/car-rental-app-client
+  https://github.com/DevPronob/car-rental-app-frontend
 
 - ⚙️ **Backend Repository**  
   https://github.com/DevPronob/car-rental-app-backend  
