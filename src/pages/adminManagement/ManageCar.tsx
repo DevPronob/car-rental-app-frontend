@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import { useCreateCarMutation, useDeleteCarMutation, useGetCarsQuery, useUpdateCarMutation } from '../../redux/features/car/car.api';
@@ -134,6 +135,7 @@ const AddCar = () => {
     const [feature, setFeature] = useState('');
     const carAllFeatures = ['Bluetooth', "AC", "Sunroof", "Advanced safety features", "Convertible Roof", "Emergency Control"];
     const carFeatureOptions = carAllFeatures.map(f => ({ value: f, label: f }));
+    console.log(feature);
 
     const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
         const toastId = toast.loading('Creating vehicle...');
@@ -203,7 +205,7 @@ const AddCar = () => {
                             <Col span={24}>
                                 <Controller
                                     name="images"
-                                    render={({ field: { onChange, ...field } }) => (
+                                    render={({ field: { onChange } }) => (
                                         <div className="flex flex-col gap-2">
                                             <label className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-widest ml-1">Vehicle Images</label>
                                             <div className="relative group">
@@ -248,7 +250,7 @@ const UpdateCar = ({ item }: any) => {
     const carAllFeatures = ['Bluetooth', "AC", "Sunroof", "Advanced safety features", "Convertible Roof", "Emergency Control"];
     const carFeatureOptions = carAllFeatures.map(f => ({ value: f, label: f }));
     const statusOptions = [{ label: 'Available', value: 'available' }, { label: 'Unavailable', value: 'unavailable' }];
-
+console.log(feature);
     const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
         const toastId = toast.loading('Updating vehicle...');
         const carPostData = {

@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetUnassignedBookingsQuery, useClaimBookingMutation } from '../../redux/features/booking/booking.api';
 import Loading from '../../components/Loading';
-import { Table, Button, Space, message, Tag } from 'antd';
+import { Table, Button, message, Tag } from 'antd';
 import moment from 'moment';
 import { HiOutlineSearch, HiOutlineLightningBolt } from 'react-icons/hi';
 

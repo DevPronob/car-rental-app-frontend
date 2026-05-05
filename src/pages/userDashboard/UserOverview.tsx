@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useGetMeQuery, useUpdateUserMutation } from '../../redux/features/user/user.api'
-import { Button, Col, Modal, Row } from 'antd'
+import { Button, Modal } from 'antd'
 import FormContainer from '../../components/Form/FormContainer'
 import InputField from '../../components/Form/InputField'
 import { FieldValues, SubmitHandler } from 'react-hook-form'

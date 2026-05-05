@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetMeQuery } from '../../redux/features/user/user.api';
 import { useGetDriverBookingsQuery } from '../../redux/features/booking/booking.api';
 import Loading from '../../components/Loading';
 import { HiOutlineClipboardList, HiOutlineTruck, HiOutlineCurrencyDollar } from 'react-icons/hi';
-import moment from 'moment';
 
 function DriverOverview() {
     const { data: meData, isLoading: isMeLoading } = useGetMeQuery(undefined);

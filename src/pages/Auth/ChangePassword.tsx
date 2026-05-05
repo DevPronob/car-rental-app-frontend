@@ -7,7 +7,7 @@ import { useChangePasswordMutation } from '../../redux/features/user/user.api';
 import { FieldValues, SubmitHandler } from 'react-hook-form';
 import FormContainer from '../../components/Form/FormContainer';
 import InputField from '../../components/Form/InputField';
-import { Button, Row } from 'antd';
+import { Button } from 'antd';
 import toast from 'react-hot-toast';
 
 function ChangePassword() {

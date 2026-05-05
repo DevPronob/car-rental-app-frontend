@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
 import { useFormContext, Controller } from 'react-hook-form';
 import axios from 'axios';
@@ -10,7 +11,7 @@ interface LocationSelectorProps {
 }
 
 const LocationSelector = ({ name, label }: LocationSelectorProps) => {
-    const { control, setValue, watch } = useFormContext();
+    const { control, setValue } = useFormContext();
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState<any[]>([]);
     const [isOpen, setIsOpen] = useState(false);
